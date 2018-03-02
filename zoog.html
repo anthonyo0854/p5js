@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+    
+    <script>
+        function setup() {
+            createCanvas(800,600);
+            
+            //background
+            background(108,78,167)
+            
+            //body
+            strokeWeight(3);
+            fill(111,168,220);
+            rect(320,250,160,200);
+            
+            //"I <3 Space"
+            textSize(25);
+            fill(255,0,0);
+            textFont('Comic Sans Ms')
+            text("I <3 Space",345,325);
+        
+            //legs
+            strokeWeight(3);
+            line(260,320,320,320); //L-short
+            line(260,320,260,480);
+            line(320,340,280,340); //L-longer
+            line(280,340,280,500);
+            line(480,320,540,320); //R-short
+            line(540,320,540,480);
+            line(480,340,520,340); //R-longer
+            line(520,340,520,500);
+            
+            //eyes
+            strokeWeight(3);
+            line(300,100,340,140); //connect-head-eye
+            line(460,140,500,100); //connect-head-eye
+            fill(255,229,153);
+            ellipse(300,100,40,40); //eyeball
+            ellipse(500,100,40,40); //eyeball
+            
+            //head
+            strokeWeight(3)
+            fill(208,224,227);
+            ellipse(400,160,200,80);
+            line(400,200,400,250); //neck
+            
+            //arms
+            strokeWeight(3);
+            line(200,270,320,270); //left
+            line(480,270,600,270); //right
+            
+            strokeWeight(10);
+            point(500,100); //pupil
+            point(300,100); //pupil
+            
+
+            //rings
+            noFill()
+            stroke(255,215,0);
+            strokeWeight(8);
+            ellipse(560,270,30,40); //right
+            ellipse(260,270,30,40); //left
+            
+        }
+
+        function draw() {
+            
+        }
+    </script>
+</head>
+
+<body>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/anthonyo0854/p5js/blob/master/zoog.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
