@@ -8,19 +8,17 @@
 
     <script>
         var x, y
-        var w, h
+        
 
         function setup() {
             createCanvas(600, 600);
             background(255);
             x = random(600)
             y = random(600)
-            w = 50
-            h = 50
         }
 
         function draw() {
-            rect(x, y, w, h, 15);
+            rect(x, y, 50, 50, 15);
 
             if (keyIsDown(RIGHT_ARROW)) {
                 x += 5
