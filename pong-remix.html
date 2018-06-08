@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>Pong</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.13/p5.js"></script>
+    <script>
+        var ballX;
+        var ballY;
+        var ballSpeedX = 5;
+        var ballSpeedY = 5;
+        var paddleHeight = 30;
+        var t = millis() //time variable
+        var score //tracks score
+        var r, g, b //red,gree,blue
+        var paddleWidth //width of the paddle 
+     
+    
+        function setup() {
+            createCanvas(800, 600);
+            noCursor();
+            ballX = random(width);
+            ballY = random(height / 2);
+            score = 0 //score count starts at 0
+            r,g,b = 0 //red,green,blue levels start at 0 
+            paddleWidth = 200 // the width of the paddle starts as 200 pixels
+            
+        }
+
+        function draw() {
+            background(128);
+            moveBall();
+            checkCollide();
+            drawPaddle();
+            drawBall();
+            strokeWeight(2)
+            stroke(0)
+            fill(255)
+            textSize(25)
+            text('Time: ' + millis()/1000, 300,100) //the time is displayed at the top of the screen
+            text('Score: ' + score ,300,200) //the score is displayed under the time
+            
+            
+            
+        }
+
+        function drawPaddle() {
+            fill(r,g,b); //the paddle will change colors, and will be filled by the variables of red,green, and blue
+            strokeWeight(4);
+            rect(mouseX-100, height - paddleHeight - 4, paddleWidth, paddleHeight); // the paddle will be drawn at the mouseX coordinate, and will be the center of the paddle as well.
+            
+        
+            
+        }
+        function moveBall() {
+            ballX = ballX + ballSpeedX;
+            ballY = ballY + ballSpeedY;
+
+            console.log("ballSpeedX: " + ballSpeedX + 
+                               ", ballSpeedY: " + ballSpeedY);
+        }
+
+        function checkCollide() {
+            if (ballX < 0 || ballX > width) {
+                ballSpeedX = ballSpeedX * -1.05;
+                
+            }
+            if (ballY < 0) {
+                ballSpeedY = ballSpeedY * -1.05;
+                
+            }
+            if (ballY > height - paddleHeight) {
+                if (ballX > mouseX - 100 && ballX < mouseX + 100) {
+                    ballSpeedY = ballSpeedY * -1.05; //The Ball's speed increases
+                    score = score + 1 //when the ball touches the paddle, the score increases by 1
+                    r = random(255)
+                    g = random(255)
+                    b = random(255) //when the ball touches the paddle, the color variable changes randomly and will become the color tha fills the paddle and ball
+                    paddleWidth = paddleWidth -2.5 // the paddle decreases by 2.5 pixels
+                    paddleWidth = constrain(paddleWidth,50,200) // the paddle can be 50 pixels small and a maximum of 200 pixels
+                
+                }
+                else {
+                    text("GAME OVER!", width / 2, height / 2);
+                    noLoop();
+                }
+            
+            }
+            
+            
+            
+        }
+
+        function drawBall() {
+            strokeWeight(2);
+            ellipse(ballX, ballY, 20, 20);
+        }
+
+        
+    </script>
+</head>
+
+<body>
+<form><input TYPE="button" onClick="history.go(0)" value="Reset"></form>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/anthonyo0854/p5js/blob/master/pong-remix.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
